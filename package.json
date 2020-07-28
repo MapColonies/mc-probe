@@ -1,0 +1,14 @@
+{
+    "name": "mc-probe",
+    "version": "0.0.8",
+    "description": "Map-Colonies Probe",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Map-Colonies inc",
+    "license": "ISC",
+    "dependencies": {
+        "@godaddy/terminus": "^4.1.0"
+    }
+}
