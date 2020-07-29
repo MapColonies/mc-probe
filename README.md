@@ -21,7 +21,7 @@ const logger = new MCLogger({
 },service);
 const probConfig = {
 };
-const probe = new Probe(logger,probConfig);
+const probe = new Probe(logger, probConfig);
 probe.start(app,3000).then(()=>{
     probe.readyFlag = true;
 }).catch(()=>{
@@ -37,7 +37,6 @@ import express from 'express';
 import { readFileSync } from 'fs'
 const serviceString = readFileSync('./package.json','utf-8');
 const service = JSON.parse(serviceString);
-console.log(service);
 const app = express();
 const logger = new MCLogger({
     level:'info'
