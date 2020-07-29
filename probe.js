@@ -4,7 +4,7 @@ const {createTerminus, HealthCheckError} = require('@godaddy/terminus');
 const http = require('http');
 
 
-module.exports = class Probe {
+module.exports.Probe = class Probe {
 
     constructor(logger, config) {
         this._logger = logger;
@@ -53,7 +53,7 @@ module.exports = class Probe {
             }
         };
         this._options = {
-            // healtcheck options
+            // health check options
             healthChecks: {
                 '/liveness': config.liveness || liveness,    // a promise returning function indicating service health
                 '/readiness': config.readiness || readiness    // a promise returning function indicating service ready
@@ -119,4 +119,23 @@ module.exports = class Probe {
             this._logger.log('error', `server is not running`);
         }
     }
+
+    startNest(app, port) {
+        return new Promise((resolve, reject) => {
+          this.server = createTerminus(app.getHttpServer(), this._options);
+          app
+            .listen(port)
+            .then(() => {
+              this._logger.log('info', `Probe server is listening on port ${port}`);
+              return resolve();
+            })
+            .catch(err => {
+              this.readyFlag = false;
+              this.liveFlag = false;
+              this.addError(err);
+              this._logger.log('error', `Error start rafael prob server : ${err}`);
+              return reject();
+            });
+        });
+      }
 }
