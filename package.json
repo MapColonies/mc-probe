@@ -10,14 +10,42 @@
         "url": "https://github.com/MapColonies/mc-probe.git"
     },
     "bugs": {
-       "url": "https://github.com/MapColonies/mc-probe/issues" 
+        "url": "https://github.com/MapColonies/mc-probe/issues"
     },
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "lint": "eslint ./**/*.js",
+        "lint:fix": "eslint --fix ./**/*.js",
+        "release": "standard-version"
     },
     "author": "Map-Colonies inc",
     "license": "ISC",
     "dependencies": {
         "@godaddy/terminus": "^4.1.0"
+    },
+    "devDependencies": {
+        "@commitlint/cli": "^9.1.2",
+        "@commitlint/config-conventional": "^9.1.1",
+        "commitlint": "^9.1.0",
+        "cz-conventional-changelog": "^3.2.0",
+        "eslint": "^6.8.0",
+        "eslint-config-standard": "^14.1.1",
+        "eslint-plugin-import": "^2.22.0",
+        "eslint-plugin-node": "^11.1.0",
+        "eslint-plugin-promise": "^4.2.1",
+        "eslint-plugin-standard": "^4.0.1",
+        "husky": "^4.2.5",
+        "nyc": "^15.1.0",
+        "standard-version": "^8.0.2"
+    },
+    "husky": {
+        "hooks": {
+            "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+        }
+    },
+    "config": {
+        "commitizen": {
+            "path": "./node_modules/cz-conventional-changelog"
+        }
     }
 }
