@@ -1,7 +1,5 @@
 'use strict';
 
-let mcProbe = require("./probe");
+const mcProbe = require('./probe');
 
 module.exports = mcProbe;
-
-
