@@ -21,7 +21,7 @@
     "author": "Map-Colonies inc",
     "license": "ISC",
     "dependencies": {
-        "@godaddy/terminus": "^4.1.0"
+        "@godaddy/terminus": "^4.5.0"
     },
     "devDependencies": {
         "@commitlint/cli": "^9.1.2",
